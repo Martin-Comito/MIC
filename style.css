@@ -65,17 +65,14 @@ p strong, p em {
     transition: color var(--transition-speed);
 }
 
-a {
-    color: var(--color-primario);
-    text-decoration: none;
-    transition: color var(--transition-speed);
-}
-a:hover {
-    color: var(--color-secundario);
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
 
 section {
-    padding: 80px 0;
+    padding: 80px 0; /* Espaciado general entre secciones */
     transition: background-color var(--transition-speed);
 }
 
@@ -356,6 +353,8 @@ body.dark-mode .feature-item p {
 .zona-cobertura {
     background: var(--color-fondo-seccion); /* Alternar color */
     text-align: center;
+    /* AJUSTE: Reducir padding inferior */
+    padding-bottom: 40px; 
 }
 body.dark-mode .zona-cobertura {
      background: var(--color-fondo); /* Alternar color modo oscuro */
@@ -392,6 +391,8 @@ body.dark-mode .zona-cobertura p {
 .sobre-mi {
      background: var(--color-fondo); /* Alternar color */
      text-align: center;
+     /* AJUSTE: Reducir padding superior */
+     padding-top: 40px; 
 }
 .sobre-mi p {
      font-size: 1.1rem;
@@ -426,16 +427,6 @@ body.dark-mode .sobre-mi p {
     width: 250px; /* Tamaño de la imagen */
     height: auto;
     border-radius: 8px;
-}
-@media (max-width: 768px) {
-    .about-content {
-        flex-direction: column; /* Apila en móvil */
-        text-align: center;
-    }
-    .about-img {
-        width: 200px; /* Más chica en móvil */
-        margin-bottom: 1rem;
-    }
 }
 
 
@@ -643,6 +634,10 @@ body.dark-mode .footer small {
 
     .hero { padding: 80px 0; }
     section { padding: 60px 0; }
+    
+    /* AJUSTE ESPACIO MAPA/SOBREMI MÓVIL */
+    .zona-cobertura { padding-bottom: 30px; }
+    .sobre-mi { padding-top: 30px; }
 
     .map-container-simple { height: 350px; } /* Mapa más bajo en tablet */
 
@@ -653,6 +648,15 @@ body.dark-mode .footer small {
         bottom: 20px;
         right: 20px;
     }
+     /* CSS para layout About con imagen (opcional) en móvil */
+    .about-content {
+        flex-direction: column; /* Apila en móvil */
+        text-align: center;
+    }
+    .about-img {
+        width: 200px; /* Más chica en móvil */
+        margin-bottom: 1rem;
+    }
 }
 @media (max-width: 576px) {
     .container { max-width: 100%; } /* Ancho completo */
@@ -660,6 +664,11 @@ body.dark-mode .footer small {
     h2 { font-size: 1.6rem; }
     .hero { padding: 60px 0; }
     section { padding: 50px 0; }
+    
+    /* AJUSTE ESPACIO MAPA/SOBREMI MÓVIL PEQUEÑO */
+    .zona-cobertura { padding-bottom: 20px; }
+    .sobre-mi { padding-top: 20px; }
+
     .map-container-simple { height: 300px; } /* Mapa más bajo en móvil */
     .footer { padding: 40px 0 20px 0; }
 }
