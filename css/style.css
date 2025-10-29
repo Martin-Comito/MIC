@@ -92,7 +92,22 @@ header {
 
 /* Menú Escritorio (Horizontal y Centrado) */
 .nav-menu { display: block; flex-grow: 1; text-align: center; }
-.nav-menu ul { list-style: none; display: flex; justify-content: center; margin: 0; padding: 0; }
+/* --- Menú Escritorio (Horizontal y Centrado) --- */
+.nav-menu ul { 
+    list-style: none; 
+    display: flex; 
+    justify-content: center; 
+    margin: 0; padding: 0; 
+    
+    /* CRÍTICO: Añade 30px de espacio entre los ítems */
+    gap: 30px; 
+}
+
+/* Y revisa que el LI no tenga margen lateral para evitar doble espaciado */
+.nav-menu li { 
+    margin-left: 0; 
+    margin-right: 0;
+}
 .nav-menu a { font-weight: 500; padding: 5px 0; position: relative; transition: color 0.3s; color: var(--color-link); }
 
 #theme-toggle { border: 1px solid var(--color-border); color: var(--color-muted); z-index: 1002; }
