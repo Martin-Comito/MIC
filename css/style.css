@@ -164,6 +164,10 @@ img { max-width: 100%; height: auto; display: block; border-radius: 5px; }
     max-width: 900px; /* CRÍTICO: Ocupa más ancho de la página en PC */
     border-radius: 8px; 
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); 
+    background-image: url('img/inicio-hero.jpg'); /* Pon la ruta a tu nueva imagen */
+    background-size: cover;          /* Esto hace que la imagen cubra todo el espacio */
+    background-position: center;     /* Centra la imagen */
+    background-repeat: no-repeat;  /* Evita que se repita */
 }
 .about-me { text-align: center; display: flex; align-items: center; flex-wrap: wrap; gap: 2rem; justify-content: center; }
 
