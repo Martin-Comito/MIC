@@ -79,13 +79,11 @@ img { max-width: 100%; height: auto; display: block; border-radius: 5px; }
 
 /* [INICIO: BLOQUE DE CORRECCIÓN PARA UTILIDAD] */
 
-/* NUEVO: Contenedor para Íconos de Utilidad (Redes + Tema) */
+/* DESPUÉS (así debe quedar) */
 .utilidad-container {
-    display: flex; /* CRÍTICO: FUERZA ALINEACIÓN HORIZONTAL */
+    display: flex; 
     align-items: center;
-    gap: 15px; /* Espacio entre los elementos de utilidad */
     margin-left: 20px; 
-    /* Asegúrate de que este bloque no esté envuelto en otro lugar de forma incorrecta */
 }
 
 /* Estilo para los Íconos de Redes en el Header */
@@ -119,7 +117,30 @@ img { max-width: 100%; height: auto; display: block; border-radius: 5px; }
 #theme-toggle { border: 1px solid var(--color-border); color: var(--color-muted); z-index: 1002; }
 
 .header-contact .fab { font-size: 24px; color: var(--color-heading); transition: color 0.3s; margin-left: 10px; }
+/* --- INICIO: NUEVAS REGLAS PARA SEPARAR ICONOS Y BOTÓN DE TEMA --- */
 
+/* Pone espacio SÓLO entre los iconos sociales */
+.header-social-icon-link + .header-social-icon-link {
+    margin-left: 15px;
+}
+
+/* Empuja el botón de tema al extremo derecho */
+.theme-switcher {
+    margin-left: auto; /* ¡Esta es la magia! */
+    padding-left: 15px; /* Un espacio para que no se pegue a los iconos */
+}
+
+/* Ajusta los espacios para móvil */
+@media (max-width: 768px) {
+    .header-social-icon-link + .header-social-icon-link {
+        margin-left: 12px;
+    }
+
+    .theme-switcher {
+        padding-left: 12px;
+    }
+}
+/* --- FIN: NUEVAS REGLAS --- */
 
 /* ----------------------------- */
 /* 2. LAYOUT Y BOTONES   */
@@ -270,12 +291,11 @@ footer {
     .nav-toggle { display: block !important; order: 3; }
 
     /* Esta regla nueva controla TODO el bloque de utilidad */
-    .utilidad-container {
-        order: 2;           /* Se ubica antes del botón de menú */
-        margin-left: auto;  /* Lo empuja a la derecha (lejos del logo) */
-        margin-right: 10px; /* Un pequeño espacio antes del botón de menú */
-        gap: 12px;          /* Reduce el espacio entre iconos en móvil */
-    }
+   .utilidad-container {
+    order: 2;
+    margin-left: auto;
+    margin-right: 10px; 
+   }
     /* --- FIN: REGLAS DE HEADER MÓVIL CORREGIDAS --- */
 
     /* Contenedor del Menú: Oculto por defecto */
