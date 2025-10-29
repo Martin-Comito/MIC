@@ -14,6 +14,8 @@
   --color-border: #d0d0d0; 
   --color-muted: #6c757d; 
   --color-primary-accent: #0f66d4; /* Azul de CTA MENOS BRILLANTE */
+  --color-neutral-cta: #607d8b; /* Fondo gris/azul suave para CTA Asesoramiento */
+
 
   /* Colores modo oscuro */
   --dark-bg: #121212; 
@@ -24,6 +26,7 @@
   --dark-border: #3a3a3a; 
   --dark-muted: #bdbdbd;
   --dark-primary-accent: #81d4fa;
+  --dark-neutral-cta: #37474f; /* Tono oscuro de gris/azul para CTA Asesoramiento */
 }
 
 /* ----------------------------- */
@@ -41,6 +44,7 @@ body.dark-mode {
     --color-border: var(--dark-border);
     --color-muted: var(--dark-muted); 
     --color-primary-accent: var(--dark-primary-accent); 
+    --color-neutral-cta: var(--dark-neutral-cta); /* Sobrescribe la CTA en dark mode */
 }
 
 /* --- Estilos Generales y Reset --- */
@@ -70,7 +74,7 @@ main {
 h1, h2, h3 { margin-bottom: 1rem; color: var(--color-heading); line-height: 1.3; }
 h2 { font-size: 1.8em; border-bottom: 2px solid var(--color-primary-accent); padding-bottom: 0.3rem; margin-bottom: 1.5rem; }
 p { margin-bottom: 1rem; color: var(--color-text); }
-a { color: var(--color-link); text-decoration: none; transition: color 0.3s;}
+a { color: var(--color-link); transition: color 0.3s;}
 img { max-width: 100%; height: auto; display: block; border-radius: 5px; }
 
 
@@ -94,22 +98,17 @@ header {
 .nav-toggle { display: none; background: none; border: none; font-size: 1.8rem; cursor: pointer; color: var(--color-heading); padding: 5px; line-height: 1; z-index: 1001; }
 
 /* Menú Escritorio (Horizontal y Centrado) */
-.nav-menu { 
-    display: block; 
-    flex-grow: 1; 
-    text-align: center; 
-}
+.nav-menu { display: block; flex-grow: 1; text-align: center; }
 .nav-menu ul { 
     list-style: none; 
     display: flex; 
-    justify-content: center; 
+    justify-content: center; /* Centra los enlaces */
     margin: 0; padding: 0; 
 }
 .nav-menu li { margin-left: 20px; }
 .nav-menu a { font-weight: 500; padding: 5px 0; position: relative; transition: color 0.3s; color: var(--color-link); }
 
 #theme-toggle { border: 1px solid var(--color-border); color: var(--color-muted); z-index: 1002; }
-
 .header-contact .fab { font-size: 24px; color: var(--color-heading); transition: color 0.3s; margin-left: 10px; }
 
 
@@ -125,8 +124,7 @@ header {
 /* ----------------------------- */
 .hero { text-align: center; margin-bottom: 3rem; }
 .hero img { margin: 0 auto 1.5rem auto !important; max-height: 450px; width: 100%; height: auto; object-fit: contain; max-width: 700px; }
-
-.about-me { text-align: center; display: flex; align-items: center; flex-wrap: wrap; gap: 2rem; justify-content: center; } /* Centra el bloque Sobre Mí */
+.about-me { text-align: center; display: flex; align-items: center; flex-wrap: wrap; gap: 2rem; justify-content: center; }
 .about-me img { margin: 0 auto 1rem auto; display: block; max-width: 220px; }
 
 
@@ -141,8 +139,6 @@ header {
     background-color: var(--color-bg-content);
 }
 .carousel-slide { display: flex; transition: transform 0.5s ease-in-out; width: 800%; }
-
-/* CORRECCIÓN IMAGEN PRODUCTO Y CARRUSEL: Altura fija para uniformidad */
 .carousel-item { width: 12.5%; flex-shrink: 0; max-height: 400px; height: auto; object-fit: contain; background-color: var(--color-bg-content); }
 .product-image { max-width: 100%; height: 200px; object-fit: contain; border-bottom: 1px solid var(--color-border); background-color: var(--color-bg-content); } /* Unifica tamaño de imágenes de producto */
 
@@ -165,10 +161,17 @@ header {
 }
 .services-summary .box { background: var(--color-bg-content); border: 1px solid var(--color-border); padding: 1.5rem; border-radius: 8px; text-align: center; transition: transform 0.3s, box-shadow 0.3s; }
 .services-summary .learn-more { display: inline-block; margin-top: 1rem; font-weight: bold; color: var(--color-primary-accent); }
+.services-summary .box h3 { 
+    display: flex; align-items: center; justify-content: center; font-size: 1.25rem; 
+}
+.services-summary .service-icon {
+    font-size: 1.8rem; color: var(--color-primary-accent); margin-right: 10px;
+}
 
-/* CORRECCIÓN CTA INICIO: Centra la sección "Necesitas Asesoramiento?" */
+
+/* CORRECCIÓN CTA INICIO: Limita y Centra la sección "Necesitas Asesoramiento?" */
 .cta-section {
-    background-color: var(--color-primary-accent);
+    background-color: var(--color-neutral-cta); /* CRÍTICO: Usa el nuevo color suave */
     color: white;
     padding: 2rem;
     text-align: center;
@@ -176,7 +179,7 @@ header {
     margin-top: 2rem;
     max-width: 800px; 
     margin-left: auto; 
-    margin-right: auto; /* CRUCIAL: Centra el bloque de la CTA */
+    margin-right: auto; /* Centra el bloque de la CTA */
 }
 .cta-section h2 { color: white; border-bottom: none; }
 .cta-section .cta-button { background-color: white; color: var(--color-heading) !important; }
@@ -195,16 +198,16 @@ footer {
     
     max-width: 1100px; 
     margin-left: auto;
-    margin-right: auto; /* Centra el bloque del footer */
+    margin-right: auto;
 }
 .social-links { 
     display: flex;
     justify-content: center; /* Centra los iconos */
+    gap: 20px; /* NEW: Espaciado más grande entre los íconos */
     margin: 10px 0 15px 0; 
 }
 .social-links a { 
     color: #fff; 
-    margin: 0 10px; /* Espaciado entre iconos de redes */
     font-size: 1.5em; 
     display: inline-block; 
 }
