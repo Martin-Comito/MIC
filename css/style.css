@@ -54,8 +54,7 @@ body {
     color: var(--color-text);
     transition: background-color 0.3s, color 0.3s;
     font-size: 16px;
-    overflow-x: hidden; /* <--- CRÍTICO: Elimina el scroll horizontal forzado */
-    font-size: 16px;
+    overflow-x: hidden; /* Anti-desborde */
 }
 
 main {
@@ -94,25 +93,26 @@ header {
 
 /* Menú Escritorio (Horizontal y Centrado) */
 .nav-menu { display: block; flex-grow: 1; text-align: center; }
-/* --- Menú Escritorio (Horizontal y Centrado) --- */
-.nav-menu ul { 
-    list-style: none; 
-    display: flex; 
-    justify-content: center; 
-    margin: 0; padding: 0; 
-    
-    /* CRÍTICO: Añade 30px de espacio entre los ítems */
-    gap: 30px; 
-}
-
-/* Y revisa que el LI no tenga margen lateral para evitar doble espaciado */
-.nav-menu li { 
-    margin-left: 0; 
-    margin-right: 0;
-}
+.nav-menu ul { list-style: none; display: flex; justify-content: center; margin: 0; padding: 0; gap: 30px; } /* Añadido GAP */
+.nav-menu li { margin-left: 0; margin-right: 0; }
 .nav-menu a { font-weight: 500; padding: 5px 0; position: relative; transition: color 0.3s; color: var(--color-link); }
 
 #theme-toggle { border: 1px solid var(--color-border); color: var(--color-muted); z-index: 1002; }
+
+/* NUEVO: Contenedor para Íconos de Utilidad (Redes + Tema) */
+.utilidad-container {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Espacio entre los iconos de redes y el botón de tema */
+    margin-left: 20px; 
+}
+.header-social-icon-link {
+    font-size: 1.3rem; /* Tamaño de los iconos de redes */
+    color: var(--color-heading); /* Color azul oscuro en modo claro */
+    transition: color 0.3s;
+}
+.header-social-icon-link:hover { color: var(--color-link); }
+.header-contact { display: none; } /* Oculta el div viejo de WhatsApp fijo */
 
 
 /* ----------------------------- */
@@ -126,11 +126,13 @@ header {
 /* 3. CENTRADO DE IMAGENES (SOLUCIÓN) */
 /* ----------------------------- */
 .hero { text-align: center; margin-bottom: 3rem; }
-.hero img { margin: 0 auto 1.5rem auto !important; max-height: 450px; width: 100%; height: auto; object-fit: contain; max-width: 700px; }
+.hero img { margin: 0 auto 1.5rem auto !important; max-height: 550px; width: 100%; height: auto; object-fit: contain; max-width: 900px; }
+.about-me { text-align: center; display: flex; align-items: center; flex-wrap: wrap; gap: 2rem; justify-content: center; }
+.about-me img { margin: 0 auto 1rem auto; display: block; max-width: 220px; }
 
 
 /* ----------------------------- */
-/* 4. CARRUSEL (SOLUCIÓN FINAL DE BOTONES Y ZOOM) */
+/* 4. CARRUSEL Y PRODUCTOS */
 /* ----------------------------- */
 .carousel-container {
     position: relative; overflow: hidden; width: 100%; margin: 20px auto; 
@@ -141,20 +143,13 @@ header {
 .carousel-slide { display: flex; transition: transform 0.5s ease-in-out; width: 800%; }
 .carousel-item { width: 12.5%; flex-shrink: 0; max-height: 400px; height: auto; object-fit: contain; background-color: var(--color-bg-content); }
 
-
-/* CORRECCIÓN CRÍTICA: UNIFORMAR TAMAÑO DE IMÁGENES DE PRODUCTO EN EL CATÁLOGO */
 .product-image { 
     width: 100%; 
     height: 240px; /* CRÍTICO: Altura fija para uniformidad visual */
-    object-fit: contain; /* Muestra imagen completa sin recorte */
+    object-fit: contain; 
     border-bottom: 1px solid var(--color-border); 
     background-color: var(--color-bg-content);
 }
-
-
-.prev-button, .next-button { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0, 0, 0, 0.6); color: white; border: none; padding: 10px 15px; cursor: pointer; z-index: 100; font-size: 1.5rem; line-height: 1; width: 40px; height: 40px; border-radius: 50%; padding: 0; display: flex; align-items: center; justify-content: center; }
-.prev-button { left: 10px; } 
-.next-button { right: 10px; } 
 
 
 /* ----------------------------- */
@@ -168,9 +163,6 @@ header {
     max-width: 900px; 
     margin: 0 auto; 
 }
-.services-summary .box { background: var(--color-bg-content); border: 1px solid var(--color-border); padding: 1.5rem; border-radius: 8px; text-align: center; transition: transform 0.3s, box-shadow 0.3s; }
-.services-summary .learn-more { display: inline-block; margin-top: 1rem; font-weight: bold; color: var(--color-primary-accent); }
-.services-summary .box h3 { display: flex; align-items: center; justify-content: center; font-size: 1.25rem; }
 
 /* CORRECCIÓN CTA INICIO: Usa el color suave */
 .cta-section {
@@ -187,31 +179,7 @@ header {
 
 
 /* ----------------------------- */
-/* 6. BOTÓN FLOTANTE DE WHATSAPP (CRÍTICO) */
-/* ----------------------------- */
-.whatsapp-float {
-    position: fixed; 
-    width: 55px;
-    height: 55px;
-    bottom: 25px; 
-    right: 25px; 
-    background-color: #25D366; 
-    color: white;
-    border-radius: 50%; 
-    text-align: center;
-    font-size: 28px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    z-index: 9999; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 6px 18px rgba(0,211,49,0.6); }
-
-/* ----------------------------- */
-/* 7. FOOTER / OTROS */
+/* 7. FOOTER / OTROS (CORRECCIÓN CENTRADO REDES)      */
 /* ----------------------------- */
 footer { 
     background: var(--heading-blue); 
@@ -220,58 +188,40 @@ footer {
     text-align: center; 
     padding: 2rem 1rem; 
     margin-top: 3rem; 
+    
     max-width: 1100px; 
     margin-left: auto;
     margin-right: auto;
 }
 .social-links { 
     display: flex;
-    justify-content: center; 
-    gap: 20px; 
+    justify-content: center; /* Centra los iconos */
+    gap: 20px; /* NEW: Espaciado más grande entre los íconos */
     margin: 10px 0 15px 0; 
 }
-.social-links a { color: #fff; font-size: 1.5em; display: inline-block; }
 
 
 /* ----------------------------- */
 /* 8. MEDIA QUERIES (Móvil)  */
 /* ----------------------------- */
 @media (max-width: 768px) {
-    
-    /* El body ya tiene overflow-x: hidden */
-
     /* Header Móvil */
     header { position: static; } 
     .nav-toggle { display: block !important; order: 3; }
     .theme-switcher { order: 2; margin-left: auto; margin-right: 15px; }
+    .utilidad-container { order: 2; margin-left: auto; margin-right: 15px; gap: 10px; } /* Ajusta el grupo de utilidad en móvil */
 
     /* Contenedor del Menú: Oculto por defecto */
-    .nav-menu { 
-        position: fixed; 
-        top: 60px; 
-        left: 0; 
-        width: 100%; 
-        height: calc(100% - 60px); 
-        overflow-y: auto; 
-        background-color: var(--color-bg-content); 
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
-        z-index: 999; 
-        display: none !important; /* OCULTA INICIALMENTE */
-    } 
-    .nav-menu.nav-menu_visible { display: block !important; } /* Muestra al hacer clic */
+    .nav-menu { position: fixed; top: 60px; left: 0; width: 100%; height: calc(100% - 60px); overflow-y: auto; background-color: var(--color-bg-content); box-shadow: 0 4px 6px rgba(0,0,0,0.1); z-index: 999; display: none !important; } 
+    .nav-menu.nav-menu_visible { display: block !important; } 
 
     /* Forzar Verticalidad */
     .nav-menu ul { display: block; padding: 0;}
     .nav-menu li { margin: 0; width: 100%; display: block; }
     .nav-menu a { display: block; padding: 0.8rem 1rem; width: 100%; border-bottom: 1px solid var(--color-border); text-align: center; }
 
-    /* Layouts Móviles: CONVERSIÓN A 1 COLUMNA */
-    .product-grid, 
-    .services-summary .service-boxes, /* Afecta las 3 cajas del inicio */
-    .gallery { 
-        grid-template-columns: 1fr !important; /* CRÍTICO: 1 columna, anula el grid de 3 */
-        max-width: 100%; /* Asegura que no intente ser más ancho que la pantalla */
-    }
+    /* Layouts Móviles */
+    .product-grid, .services-summary .service-boxes, .gallery { grid-template-columns: 1fr; }
     .carousel-item { max-height: 300px; }
 }
 
