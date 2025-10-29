@@ -56,7 +56,7 @@ body {
     font-size: 16px;
     overflow-x: hidden; /* Anti-desborde */
 }
-
+                                
 main {
     max-width: 1100px;
     margin: 30px auto;
@@ -73,7 +73,7 @@ img { max-width: 100%; height: auto; display: block; border-radius: 5px; }
 
 
 /* ----------------------------- */
-/* 1. HEADER/NAV (Base)  */
+/* 1. HEADER/NAV (Base)  */
 /* ----------------------------- */
 /* ... (reglas de header y logo sin cambios) ... */
 
@@ -155,18 +155,12 @@ img { max-width: 100%; height: auto; display: block; border-radius: 5px; }
     max-height: 400px; 
     border-radius: 8px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     background-color: var(--color-bg-content);
-    }
-    /* CORRECCIÓN CRÍTICA PARA SEPARAR FLECHAS EN EL CARRUSEL */
-.prev-button {
-    left: 10px !important; /* CRÍTICO: Asegura que la flecha izquierda se mueva */
- }
-.next-button {
-    right: 10px !important; /* CRÍTICO: Asegura que la flecha derecha se mueva */
 }
 
-.carousel-slide { display: flex; transition: transform 0.5s ease-in-out; width: 800%; }
-.carousel-item { width: 12.5%; flex-shrink: 0; max-height: 400px; height: auto; object-fit: contain; background-color: var(--color-bg-content); }
-
+/* DESPUÉS (Correcto) */
+.carousel-slide { display: flex; transition: transform 0.5s ease-in-out; }
+.carousel-item { flex-shrink: 0; max-height: 400px; height: auto; object-fit: contain; background-color: var(--color-bg-content); 
+}
 /* CRÍTICO: UNIFORMAR TAMAÑO DE IMÁGENES DE PRODUCTO EN EL CATÁLOGO */
 .product-image { 
     width: 100%; 
@@ -176,7 +170,44 @@ img { max-width: 100%; height: auto; display: block; border-radius: 5px; }
     background-color: var(--color-bg-content);
 }
 
-.prev-button, .next-button { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0, 0, 0, 0.6); color: white; border: none; padding: 10px 15px; cursor: pointer; z-index: 100; font-size: 1.5rem; line-height: 1; width: 40px; height: 40px; border-radius: 50%; padding: 0; display: flex; align-items: center; justify-content: center; }
+/* --- INICIO: REGLAS DE BOTONES DEL CARRUSEL CORREGIDAS --- */
+/* Estilo base para AMBOS botones */
+.prev-button,
+.next-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    cursor: pointer;
+    z-index: 100;
+    font-size: 1.5rem;
+    line-height: 1;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0; /* Asegura que el ícono quede centrado */
+    transition: background-color 0.3s;
+}
+
+.prev-button:hover,
+.next-button:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+/* Posición específica para CADA botón */
+.prev-button {
+    left: 10px; /* Mueve el botón 'prev' a la izquierda */
+}
+
+.next-button {
+    right: 10px; /* Mueve el botón 'next' a la derecha */
+}
+/* --- FIN: REGLAS DE BOTONES DEL CARRUSEL CORREGIDAS --- */
 
 
 /* ----------------------------- */
@@ -207,7 +238,7 @@ img { max-width: 100%; height: auto; display: block; border-radius: 5px; }
 /* 7. FOOTER / OTROS */
 /* ----------------------------- */
 footer { 
-    background: var(--heading-blue); 
+    background: var(--color-heading);
     padding: 2rem 1rem; 
     margin-top: 3rem; 
     max-width: 1100px; 
@@ -226,10 +257,26 @@ footer {
 /* 8. MEDIA QUERIES (Móvil)  */
 /* ----------------------------- */
 @media (max-width: 768px) {
-    /* Header Móvil */
-    header { position: static; } 
+    /* --- INICIO: REGLAS DE HEADER MÓVIL CORREGIDAS --- */
+    header {
+        position: static;
+        /* Aseguramos Flexbox para la alineación */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 15px; /* Padding ajustado para móvil */
+    } 
+
     .nav-toggle { display: block !important; order: 3; }
-    .theme-switcher { order: 2; margin-left: auto; margin-right: 15px; }
+
+    /* Esta regla nueva controla TODO el bloque de utilidad */
+    .utilidad-container {
+        order: 2;           /* Se ubica antes del botón de menú */
+        margin-left: auto;  /* Lo empuja a la derecha (lejos del logo) */
+        margin-right: 10px; /* Un pequeño espacio antes del botón de menú */
+        gap: 12px;          /* Reduce el espacio entre iconos en móvil */
+    }
+    /* --- FIN: REGLAS DE HEADER MÓVIL CORREGIDAS --- */
 
     /* Contenedor del Menú: Oculto por defecto */
     .nav-menu { position: fixed; top: 60px; left: 0; width: 100%; height: calc(100% - 60px); overflow-y: auto; background-color: var(--color-bg-content); box-shadow: 0 4px 6px rgba(0,0,0,0.1); z-index: 999; display: none !important; } 
