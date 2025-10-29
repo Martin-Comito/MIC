@@ -94,13 +94,31 @@ header {
 /* Menú Escritorio (Horizontal y Centrado) */
 .nav-menu { display: block; flex-grow: 1; text-align: center; }
 .nav-menu ul { list-style: none; display: flex; justify-content: center; margin: 0; padding: 0; gap: 30px; }
-.nav-menu li { margin-left: 0; margin-right: 0; }
 .nav-menu a { font-weight: 500; padding: 5px 0; position: relative; transition: color 0.3s; color: var(--color-link); }
 
 #theme-toggle { border: 1px solid var(--color-border); color: var(--color-muted); z-index: 1002; }
 
-.header-contact .fab { font-size: 24px; color: var(--color-heading); transition: color 0.3s; margin-left: 10px; }
 
+/* NUEVO: Contenedor para Íconos de Utilidad (Redes + Tema) */
+.utilidad-container {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Espacio entre los elementos de utilidad */
+    margin-left: 20px; /* Separación del menú centrado */
+}
+
+/* Estilo para los Íconos de Redes en el Header */
+.header-social-icon-link {
+    font-size: 1.3rem;
+    color: var(--color-heading); 
+    transition: color 0.3s;
+}
+.header-social-icon-link:hover {
+    color: var(--color-link);
+}
+body.dark-mode .header-social-icon-link {
+    color: var(--dark-heading); 
+}
 
 /* ----------------------------- */
 /* 2. LAYOUT Y BOTONES   */
@@ -117,9 +135,8 @@ header {
 
 
 /* ----------------------------- */
-/* 4. CARRUSEL (SOLUCIÓN FINAL DE BOTONES Y ZOOM) */
+/* 4. CARRUSEL Y PRODUCTOS */
 /* ----------------------------- */
-
 .carousel-container {
     position: relative; overflow: hidden; width: 100%; margin: 20px auto; 
     max-height: 400px; 
@@ -139,8 +156,6 @@ header {
 
 
 .prev-button, .next-button { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0, 0, 0, 0.6); color: white; border: none; padding: 10px 15px; cursor: pointer; z-index: 100; font-size: 1.5rem; line-height: 1; width: 40px; height: 40px; border-radius: 50%; padding: 0; display: flex; align-items: center; justify-content: center; }
-.prev-button { left: 10px; } 
-.next-button { right: 10px; } 
 
 
 /* ----------------------------- */
@@ -155,9 +170,7 @@ header {
     margin: 0 auto; 
 }
 .services-summary .box { background: var(--color-bg-content); border: 1px solid var(--color-border); padding: 1.5rem; border-radius: 8px; text-align: center; transition: transform 0.3s, box-shadow 0.3s; }
-.services-summary .learn-more { display: inline-block; margin-top: 1rem; font-weight: bold; color: var(--color-primary-accent); }
 .services-summary .box h3 { display: flex; align-items: center; justify-content: center; font-size: 1.25rem; }
-.services-summary .service-icon { font-size: 1.8rem; color: var(--color-primary-accent); margin-right: 10px; }
 
 /* CORRECCIÓN CTA INICIO: Usa el color suave */
 .cta-section {
@@ -174,30 +187,6 @@ header {
 
 
 /* ----------------------------- */
-/* 6. BOTÓN FLOTANTE DE WHATSAPP (CRÍTICO) */
-/* ----------------------------- */
-.whatsapp-float {
-    position: fixed; 
-    width: 55px;
-    height: 55px;
-    bottom: 25px; 
-    right: 25px; 
-    background-color: #25D366; 
-    color: white;
-    border-radius: 50%; 
-    text-align: center;
-    font-size: 28px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    z-index: 9999; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 6px 18px rgba(0,211,49,0.6); }
-
-/* ----------------------------- */
 /* 7. FOOTER / OTROS */
 /* ----------------------------- */
 footer { 
@@ -207,7 +196,6 @@ footer {
     text-align: center; 
     padding: 2rem 1rem; 
     margin-top: 3rem; 
-    
     max-width: 1100px; 
     margin-left: auto;
     margin-right: auto;
@@ -218,7 +206,6 @@ footer {
     gap: 20px; 
     margin: 10px 0 15px 0; 
 }
-.social-links a { color: #fff; font-size: 1.5em; display: inline-block; }
 
 
 /* ----------------------------- */
