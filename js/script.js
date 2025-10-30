@@ -19,37 +19,27 @@ const moonIcon = '🌙';
  */
 function applyTheme(theme) {
     if (!bodyElement || !themeToggleButton || !logoElement) {
-        // Fallar silenciosamente si el elemento no se encuentra
         return;
     }
 
     if (theme === 'dark') {
         bodyElement.classList.add('dark-mode');
-        
-        // --- CORRECCIÓN ---
-        // Muestra el ícono 🌙 y el texto para cambiar a modo claro
-        themeToggleButton.innerHTML = moonIcon + ' Modo Claro'; 
-        
+               themeToggleButton.innerHTML = moonIcon + ' Modo Claro'; 
         themeToggleButton.setAttribute('aria-label', 'Cambiar a modo claro');
         
-        // Revisa que la extensión .jpg sea la correcta para tus archivos
-        logoElement.src = 'img/logo-oscuro.svg'; 
+        // MODO OSCURO: Usa el logo CLARO (blanco)
+        logoElement.src = 'img/logo-claro-transparente.png'; 
         logoElement.setAttribute('alt', 'Logo MIC Refrigeración - Oscuro');
         
         localStorage.setItem('theme', 'dark');
-    
-    } 
-     else {
-        bodyElement.classList.remove('dark-mode');
         
-        // --- CORRECCIÓN ---
-        // Muestra el ícono ☀️ y el texto para cambiar a modo oscuro
+    } else {
+        bodyElement.classList.remove('dark-mode');
         themeToggleButton.innerHTML = sunIcon + ' Modo Oscuro'; 
-
         themeToggleButton.setAttribute('aria-label', 'Cambiar a modo oscuro');
         
-        // Revisa que la extensión .jpg sea la correcta para tus archivos
-        logoElement.src = 'img/logo-claro.(2)svg'; 
+        // MODO CLARO: Usa el logo OSCURO (negro/azul)
+        logoElement.src = 'img/logo-oscuro-transparente.png'; 
         logoElement.setAttribute('alt', 'Logo MIC Refrigeración - Claro');
         
         localStorage.setItem('theme', 'light');
