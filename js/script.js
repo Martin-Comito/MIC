@@ -11,10 +11,10 @@ const logoElement = document.querySelector('.logo-img');
 const sunIcon = '☀️'; 
 const moonIcon = '🌙'; 
 
-// --- Funcionalidad Modo Claro/Oscuro (CON EXTENSIÓN .PNG) ---
+// --- Funcionalidad Modo Claro/Oscuro (CORREGIDA CON TEXTO) ---
 
 /**
- * Aplica el tema, cambia el logo y guarda la preferencia.
+ * Aplica el tema, cambia el logo, el texto del botón y guarda la preferencia.
  * @param {string} theme - 'light' o 'dark'.
  */
 function applyTheme(theme) {
@@ -25,7 +25,11 @@ function applyTheme(theme) {
 
     if (theme === 'dark') {
         bodyElement.classList.add('dark-mode');
-        themeToggleButton.innerHTML = moonIcon; 
+        
+        // --- CORRECCIÓN ---
+        // Muestra el ícono 🌙 y el texto para cambiar a modo claro
+        themeToggleButton.innerHTML = moonIcon + ' Modo Claro'; 
+        
         themeToggleButton.setAttribute('aria-label', 'Cambiar a modo claro');
         
         // Revisa que la extensión .jpg sea la correcta para tus archivos
@@ -33,9 +37,15 @@ function applyTheme(theme) {
         logoElement.setAttribute('alt', 'Logo MIC Refrigeración - Oscuro');
         
         localStorage.setItem('theme', 'dark');
-    } else {
+    
+    } 
+     else {
         bodyElement.classList.remove('dark-mode');
-        themeToggleButton.innerHTML = sunIcon; 
+        
+        // --- CORRECCIÓN ---
+        // Muestra el ícono ☀️ y el texto para cambiar a modo oscuro
+        themeToggleButton.innerHTML = sunIcon + ' Modo Oscuro'; 
+
         themeToggleButton.setAttribute('aria-label', 'Cambiar a modo oscuro');
         
         // Revisa que la extensión .jpg sea la correcta para tus archivos
