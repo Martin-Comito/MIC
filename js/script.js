@@ -28,7 +28,7 @@ function applyTheme(theme) {
         themeToggleButton.setAttribute('aria-label', 'Cambiar a modo claro');
         
         // MODO OSCURO: Usa el logo CLARO (blanco)
-        logoElement.src = 'img/logo-claro-transparente.png'; 
+        logoElement.src = 'img/logoclaro.png'; 
         logoElement.setAttribute('alt', 'Logo MIC Refrigeración - Oscuro');
         
         localStorage.setItem('theme', 'dark');
@@ -39,7 +39,7 @@ function applyTheme(theme) {
         themeToggleButton.setAttribute('aria-label', 'Cambiar a modo oscuro');
         
         // MODO CLARO: Usa el logo OSCURO (negro/azul)
-        logoElement.src = 'img/logo-oscuro-transparente.png'; 
+        logoElement.src = 'img/logoclaro.png'; 
         logoElement.setAttribute('alt', 'Logo MIC Refrigeración - Claro');
         
         localStorage.setItem('theme', 'light');
