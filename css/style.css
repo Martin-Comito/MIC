@@ -184,7 +184,7 @@ img { max-width: 100%; height: auto; display: block; border-radius: 5px; }
 
 /* DESPUÉS (Correcto) */
 .carousel-slide { display: flex; transition: transform 0.5s ease-in-out; }
-.carousel-item { flex-shrink: 0; max-height: 400px; height: auto; object-fit: contain; background-color: var(--color-bg-content); 
+.carousel-item { width: 100%; flex-shrink: 0; overflow: hidden; max-height: 400px; height: auto; object-fit: contain; background-color: var(--color-bg-content); 
 }
 /* CRÍTICO: UNIFORMAR TAMAÑO DE IMÁGENES DE PRODUCTO EN EL CATÁLOGO */
 .product-image { 
