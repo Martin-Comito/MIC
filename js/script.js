@@ -33,7 +33,7 @@ function applyTheme(theme) {
         themeToggleButton.setAttribute('aria-label', 'Cambiar a modo claro');
         
         // Revisa que la extensión .jpg sea la correcta para tus archivos
-        logoElement.src = 'img/logo-oscuro.jpg'; 
+        logoElement.src = 'img/logo-oscuro.svg'; 
         logoElement.setAttribute('alt', 'Logo MIC Refrigeración - Oscuro');
         
         localStorage.setItem('theme', 'dark');
@@ -49,7 +49,7 @@ function applyTheme(theme) {
         themeToggleButton.setAttribute('aria-label', 'Cambiar a modo oscuro');
         
         // Revisa que la extensión .jpg sea la correcta para tus archivos
-        logoElement.src = 'img/logo-claro.jpg'; 
+        logoElement.src = 'img/logo-claro.(2)svg'; 
         logoElement.setAttribute('alt', 'Logo MIC Refrigeración - Claro');
         
         localStorage.setItem('theme', 'light');
